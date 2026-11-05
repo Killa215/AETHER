@@ -94,6 +94,11 @@ a {
   translate: 0 -12px;
 }
 
+.play-mixer{
+  display: flex; 
+  gap: 20px;
+}
+
 
 @keyframes pulse {
   0%{

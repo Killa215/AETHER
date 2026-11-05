@@ -11,35 +11,49 @@
   <div class="ambient ambient--blue"></div>
   <main class="hero" id="about">
     <div class="album-grid">
-      <div class="sound-card" data-track="Midnight">
+      <div class="sound-card" data-track="Midnight" data-artist="Weee">
         <img src="" alt="">
         <h3 class="nameSound">Midnight</h3>
         <p class="authorSound">Author</p>
       </div>
-      <div class="sound-card" data-track="djkfdjk">
+      <div class="sound-card" data-track="djkfdjk" data-artist="asd">
+        <img src="" alt="">
+        <h3 class="nameSound">djkfdjk</h3>
+        <p class="authorSound">asd</p>
+      </div>
+      <div class="sound-card" data-track="123" data-artist="Weaee">
+        <img src="" alt="">
+        <h3 class="nameSound">123</h3>
+        <p class="authorSound">Weaee</p>
+      </div>
+      <div class="sound-card" data-track="1" data-artist="aaa">
         <img src="" alt="">
         <h3 class="nameSound">Name</h3>
         <p class="authorSound">Author</p>
       </div>
-      <div class="sound-card" data-track="123">
+      <div class="sound-card" data-track="2" data-artist="Weeddde">
         <img src="" alt="">
         <h3 class="nameSound">Name</h3>
         <p class="authorSound">Author</p>
       </div>
-      <div class="sound-card" data-track="1">
+      <div class="sound-card" data-track="3" data-artist="Weessse">
         <img src="" alt="">
         <h3 class="nameSound">Name</h3>
         <p class="authorSound">Author</p>
       </div>
-      <div class="sound-card" data-track="2">
-        <img src="" alt="">
-        <h3 class="nameSound">Name</h3>
-        <p class="authorSound">Author</p>
+    </div>
+    <div class="now-playing">
+      <h2 id="current-track">Трек не выбран</h2>
+      <p id="current-artist">Исполнитель не выбран</p>
+      <div class="play-mixer">
+        <p id="start-treck">0:00</p>
+        <input type="range" id="progress" min="0" value="0">
+        <p id="end-treck">0:00</p>
       </div>
-      <div class="sound-card" data-track="3">
-        <img src="" alt="">
-        <h3 class="nameSound">Name</h3>
-        <p class="authorSound">Author</p>
+      <div class="buttons-track">
+        <button id="previous-button"><</button>
+        <button id="play-button">▶ Play</button>
+        <button id="next-button">></button>
       </div>
     </div>
   </main>
