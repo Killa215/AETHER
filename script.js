@@ -4,12 +4,18 @@ const startTime = document.getElementById("start-treck")
 const endTime = document.getElementById("end-treck")
 const previousButton = document.getElementById("previous-button")
 const nextButton = document.getElementById("next-button")
+const repeatButton = document.getElementById("repeat-button")
+const shuffleButton = document.getElementById("shuffle-button")
 
 const track = document.getElementById("current-track")
 const artist = document.getElementById("current-artist")
 const playButton = document.getElementById("play-button")
 
 let isPlaying = false
+let isRepiat = false
+let isShuffle = false
+let randomIndex
+
 let currentIndex = 0
 let currentTrack = {
   title: null,
@@ -30,8 +36,16 @@ const tracks = [
 
 const audio = new Audio()
 audio.addEventListener("ended", ()=> {
-  isPlaying = false;
-  playButton.textContent = "▶ Play"
+  if(isRepiat){
+    playMusic(currentIndex)
+  }else{
+    currentIndex++
+    if(currentIndex >= tracks.length){
+      currentIndex = 0
+    }
+    playMusic(currentIndex)
+  }
+  
 })
 audio.addEventListener("loadedmetadata", ()=>{
   progress.max = audio.duration
@@ -83,12 +97,34 @@ previousButton.addEventListener("click", ()=> {
   playMusic(currentIndex)
 });
 nextButton.addEventListener("click", ()=> {
-  currentIndex++
-  if(currentIndex >= tracks.length){
-    currentIndex = 0
+  if(isShuffle){
+    do{
+      randomIndex = Math.floor(Math.random() * tracks.length)
+    }while(randomIndex === currentIndex)
+    currentIndex = randomIndex
+    playMusic(currentIndex)
+  }else{
+    currentIndex++
+    if(currentIndex >= tracks.length){
+      currentIndex = 0
+    }
+    playMusic(currentIndex)
   }
-  playMusic(currentIndex)
 });
+repeatButton.addEventListener("click", ()=>{
+  if(isRepiat === false){
+    isRepiat = true
+  }else{
+    isRepiat = false
+  }
+})
+shuffleButton.addEventListener("click", ()=>{
+  if(isShuffle === false){
+    isShuffle = true
+  }else{
+    isShuffle = false
+  }
+})
 
 covers.forEach((cover, index) => {
   cover.addEventListener("click", ()=> playMusic(index));
