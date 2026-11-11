@@ -6,13 +6,14 @@ const previousButton = document.getElementById("previous-button")
 const nextButton = document.getElementById("next-button")
 const repeatButton = document.getElementById("repeat-button")
 const shuffleButton = document.getElementById("shuffle-button")
+const currentCover = document.getElementById("current-cover")
 
 const track = document.getElementById("current-track")
 const artist = document.getElementById("current-artist")
 const playButton = document.getElementById("play-button")
 
 let isPlaying = false
-let isRepiat = false
+let isRepeat = false
 let isShuffle = false
 let randomIndex
 
@@ -23,29 +24,32 @@ let currentTrack = {
   src: null 
   }
 const tracks = [
-  {title: 'Midnight',
-  artist: 'Author',
+  {title: 'Баллада',
+  artist: 'Xcho и Мот',
   src: "./audio/Баллада.mp3" },
-  {title: 'djkfdjk',
-  artist: 'asd',
+  {title: 'Лужники',
+  artist: 'Basta, Guf ',
   src: "./audio/Лужники.mp3" },
-  {title: '123',
-  artist: 'Weaee',
+  {title: 'Marlboro',
+  artist: 'Miyagi',
   src: "./audio/Marlboro.mp3" },
 ]
 
 const audio = new Audio()
 audio.addEventListener("ended", ()=> {
-  if(isRepiat){
+  if(isRepeat){
     playMusic(currentIndex)
   }else{
-    currentIndex++
-    if(currentIndex >= tracks.length){
-      currentIndex = 0
+    if(isShuffle){
+      playRandomTrack()
+    }else{
+      currentIndex++
+      if(currentIndex >= tracks.length){
+        currentIndex = 0
+      }
+      playMusic(currentIndex)
     }
-    playMusic(currentIndex)
   }
-  
 })
 audio.addEventListener("loadedmetadata", ()=>{
   progress.max = audio.duration
@@ -54,6 +58,7 @@ audio.addEventListener("loadedmetadata", ()=>{
 audio.addEventListener("timeupdate", ()=> {
   progress.value = audio.currentTime
   startTime.textContent = formatTime(audio.currentTime)
+  progress.style.setProperty("--progress", `${(audio.currentTime / audio.duration) * 100}%`)
 })
 progress.addEventListener("input", ()=>{
   audio.currentTime = progress.value
@@ -63,7 +68,8 @@ function playMusic(index) {
   isPlaying = false
   currentIndex = index
   currentTrack = tracks[index]
-
+  
+  currentCover.src = covers[index].src
   audio.src = currentTrack.src
   progress.value = 0
   startTime.textContent = "00:00"
@@ -89,6 +95,15 @@ function formatTime(second){
   }
 }
 
+function playRandomTrack(){
+  if(tracks.length <=1) return
+  do{
+    randomIndex = Math.floor(Math.random() * tracks.length)
+  }while(randomIndex === currentIndex)
+  currentIndex = randomIndex
+  playMusic(currentIndex)
+}
+
 previousButton.addEventListener("click", ()=> {
   currentIndex--
   if(currentIndex < 0){
@@ -98,11 +113,7 @@ previousButton.addEventListener("click", ()=> {
 });
 nextButton.addEventListener("click", ()=> {
   if(isShuffle){
-    do{
-      randomIndex = Math.floor(Math.random() * tracks.length)
-    }while(randomIndex === currentIndex)
-    currentIndex = randomIndex
-    playMusic(currentIndex)
+    playRandomTrack()
   }else{
     currentIndex++
     if(currentIndex >= tracks.length){
@@ -112,13 +123,15 @@ nextButton.addEventListener("click", ()=> {
   }
 });
 repeatButton.addEventListener("click", ()=>{
-  if(isRepiat === false){
-    isRepiat = true
+  repeatButton.classList.toggle("active")
+  if(isRepeat === false){
+    isRepeat = true
   }else{
-    isRepiat = false
+    isRepeat = false
   }
 })
 shuffleButton.addEventListener("click", ()=>{
+  shuffleButton.classList.toggle("active")
   if(isShuffle === false){
     isShuffle = true
   }else{

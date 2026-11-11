@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,52 +11,44 @@
   <div class="ambient ambient--blue"></div>
   <main class="hero" id="about">
     <div class="album-grid">
-      <div class="sound-card" data-track="Midnight" data-artist="Weee">
-        <img src="" alt="">
-        <h3 class="nameSound">Midnight</h3>
-        <p class="authorSound">Author</p>
+      <div class="sound-card" data-track="Баллада" data-artist="Xcho и Мот">
+        <img src="./image/Баллада.webp" alt="">
+        <h3 class="nameSound">Баллада</h3>
+        <p class="authorSound">Xcho и Мот</p>
       </div>
-      <div class="sound-card" data-track="djkfdjk" data-artist="asd">
-        <img src="" alt="">
-        <h3 class="nameSound">djkfdjk</h3>
-        <p class="authorSound">asd</p>
+      <div class="sound-card" data-track="Лужники" data-artist="Basta, Guf ">
+        <img src="./image/Лужники.webp" alt="">
+        <h3 class="nameSound">Лужники</h3>
+        <p class="authorSound">Basta, Guf </p>
       </div>
-      <div class="sound-card" data-track="123" data-artist="Weaee">
-        <img src="" alt="">
-        <h3 class="nameSound">123</h3>
-        <p class="authorSound">Weaee</p>
-      </div>
-      <div class="sound-card" data-track="1" data-artist="aaa">
-        <img src="" alt="">
-        <h3 class="nameSound">Name</h3>
-        <p class="authorSound">Author</p>
-      </div>
-      <div class="sound-card" data-track="2" data-artist="Weeddde">
-        <img src="" alt="">
-        <h3 class="nameSound">Name</h3>
-        <p class="authorSound">Author</p>
-      </div>
-      <div class="sound-card" data-track="3" data-artist="Weessse">
-        <img src="" alt="">
-        <h3 class="nameSound">Name</h3>
-        <p class="authorSound">Author</p>
+      <div class="sound-card" data-track="Marlboro" data-artist="Miyagi">
+        <img src="./image/Marlboro.jpg" alt="">
+        <h3 class="nameSound">Marlboro</h3>
+        <p class="authorSound">Miyagi</p>
       </div>
     </div>
     <div class="now-playing">
-      <h2 id="current-track">Трек не выбран</h2>
-      <p id="current-artist">Исполнитель не выбран</p>
-      <div class="play-mixer">
-        <p id="start-treck">0:00</p>
-        <input type="range" id="progress" min="0" value="0">
-        <p id="end-treck">0:00</p>
+      <div class="player-track">
+        <img id="current-cover" src="" alt="Обложка трека">
       </div>
-      <div class="buttons-track">
-        <button id="previous-button"><</button>
-        <button id="shuffle-button">🔀</button>
-        <button id="play-button">▶ Play</button>
-        <button id="repeat-button">🔁</button>
-        <button id="next-button">></button>
+      <div class="player-controls">
+        <h2 id="current-track">Трек не выбран</h2>
+        <p id="current-artist">Исполнитель не выбран</p>
+        <div class="play-mixer">
+          <p id="start-treck">0:00</p>
+          <input type="range" id="progress" min="0" value="0">
+          <p id="end-treck">0:00</p>
+        </div>
+        <div class="buttons-track">
+          <button id="previous-button">&lt;</button>
+          <button id="shuffle-button"><img src="./icon/shuffle.png"></button>
+          <button id="play-button">▶ Play</button>
+          <button id="repeat-button"><img src="./icon/repeat.png"></button>
+          <button id="next-button">&gt;</button>
+        </div>
+        <div class="player-extra">ntrcn</div>
       </div>
+      
     </div>
   </main>
   <script src="script.js"></script>
