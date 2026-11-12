@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">AETHER pink octopus mascot</title>
+  <desc id="desc">A cute pastel pink jellyfish-like octopus with a rounded bell, tiny black eyes, blush, and five wavy tentacles.</desc>
+  <defs>
+    <linearGradient id="bell" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0" stop-color="#ffd9e8"/>
+      <stop offset="1" stop-color="#f7aeca"/>
+    </linearGradient>
+    <linearGradient id="tentacle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd0e2"/>
+      <stop offset="1" stop-color="#f5a8c5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tentacles: each one is an independent shape for easy animation -->
+  <g stroke="#b94f76" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path id="tentacle-left" fill="url(#tentacle)" d="M174 286 C165 314 132 329 126 357 C119 385 145 393 151 414 C157 438 143 454 158 463 C175 474 190 454 188 435 C185 411 171 400 183 381 C195 360 215 343 215 311 Z"/>
+    <path id="tentacle-mid-left" fill="url(#tentacle)" d="M214 292 C204 322 198 344 204 365 C210 388 230 396 230 420 C230 443 217 457 233 466 C250 476 269 457 268 437 C267 412 251 397 259 375 C268 350 277 326 266 296 Z"/>
+    <path id="tentacle-center" fill="url(#tentacle)" d="M260 291 C250 317 265 338 279 356 C296 377 290 397 283 420 C276 443 286 462 305 462 C324 462 337 444 331 424 C325 402 314 388 324 365 C334 342 337 317 318 292 Z"/>
+    <path id="tentacle-mid-right" fill="url(#tentacle)" d="M315 291 C322 320 340 338 352 357 C366 378 354 398 350 419 C345 441 358 457 376 451 C395 445 397 424 386 406 C375 388 373 376 387 357 C402 337 393 317 366 291 Z"/>
+    <path id="tentacle-right" fill="url(#tentacle)" d="M348 282 C359 308 385 322 407 338 C430 355 423 377 407 392 C392 407 391 425 406 438 C421 451 442 440 442 420 C442 398 457 388 453 364 C448 335 407 316 389 284 Z"/>
+  </g>
+
+  <!-- Main rounded head -->
+  <path id="head" fill="url(#bell)" stroke="#b94f76" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+    d="M91 245 C105 159 174 104 250 99 C328 94 403 139 427 211 C442 256 427 294 395 311 C377 321 353 320 337 312 C313 301 291 298 256 298 C220 298 195 304 174 316 C151 329 121 317 105 297 C91 279 86 263 91 245 Z"/>
+
+  <!-- Soft inner face area -->
+  <path fill="#f8b9d1" opacity=".72" d="M124 246 C137 190 190 151 253 151 C315 151 372 185 392 238 C404 270 382 286 351 281 C321 276 294 269 256 270 C217 270 185 280 156 283 C130 285 115 273 124 246 Z"/>
+
+  <!-- Highlights -->
+  <ellipse cx="202" cy="157" rx="19" ry="11" fill="#fff0f6" opacity=".75" transform="rotate(-18 202 157)"/>
+  <path d="M125 238 C117 250 120 271 131 278 C140 282 143 267 139 251 C136 238 131 231 125 238Z" fill="#fff0f6" opacity=".72"/>
+  <path d="M154 240 C145 254 150 275 161 278 C171 281 173 264 168 249 C164 237 159 232 154 240Z" fill="#fff0f6" opacity=".72"/>
+  <path d="M346 228 C336 244 339 267 350 270 C361 273 365 255 360 239 C356 226 351 220 346 228Z" fill="#fff0f6" opacity=".78"/>
+  <path d="M371 236 C362 251 366 271 377 273 C387 274 390 258 385 244 C381 232 376 227 371 236Z" fill="#fff0f6" opacity=".78"/>
+
+  <!-- Face -->
+  <ellipse cx="207" cy="251" rx="13" ry="15" fill="#160d15"/>
+  <ellipse cx="304" cy="251" rx="13" ry="15" fill="#160d15"/>
+  <path id="smile" d="M247 264 Q256 274 265 264" fill="none" stroke="#a94d70" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="169" cy="273" rx="13" ry="8" fill="#f29bb9" opacity=".42"/>
+  <ellipse cx="344" cy="273" rx="13" ry="8" fill="#f29bb9" opacity=".42"/>
+</svg>
