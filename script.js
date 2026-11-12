@@ -214,5 +214,6 @@ volume.addEventListener("input", ()=>{
 
 muteButton.addEventListener("click", ()=>{
   audio.muted = !audio.muted
+  muteButton.classList.toggle("active", audio.muted)
   updateVolumeIcon()
 })
