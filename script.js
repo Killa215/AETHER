@@ -36,6 +36,15 @@ const tracks = [
 ]
 
 const audio = new Audio()
+
+audio.addEventListener("play", ()=>{
+  isPlaying = true
+  playButton.textContent = '⏸ Pause'
+})
+audio.addEventListener("pause", ()=>{
+  isPlaying = false
+  playButton.textContent = '▶ Play'
+})
 audio.addEventListener("ended", ()=> {
   if(isRepeat){
     playMusic(currentIndex)
@@ -65,7 +74,6 @@ progress.addEventListener("input", ()=>{
 })
 
 function playMusic(index) {
-  isPlaying = false
   currentIndex = index
   currentTrack = tracks[index]
   
@@ -76,11 +84,8 @@ function playMusic(index) {
   endTime.textContent = "00:00"
   audio.play()
 
-  isPlaying = true
-
   track.textContent = currentTrack.title
   artist.textContent = currentTrack.artist
-  playButton.textContent = '⏸ Pause'
 }
 
 function formatTime(second){
@@ -123,20 +128,12 @@ nextButton.addEventListener("click", ()=> {
   }
 });
 repeatButton.addEventListener("click", ()=>{
+  isRepeat = !isRepeat
   repeatButton.classList.toggle("active")
-  if(isRepeat === false){
-    isRepeat = true
-  }else{
-    isRepeat = false
-  }
 })
 shuffleButton.addEventListener("click", ()=>{
+  isShuffle = !isShuffle
   shuffleButton.classList.toggle("active")
-  if(isShuffle === false){
-    isShuffle = true
-  }else{
-    isShuffle = false
-  }
 })
 
 covers.forEach((cover, index) => {
