@@ -7,6 +7,7 @@ const nextButton = document.getElementById("next-button")
 const repeatButton = document.getElementById("repeat-button")
 const shuffleButton = document.getElementById("shuffle-button")
 const currentCover = document.getElementById("current-cover")
+const playerStatus = document.getElementById("player-status")
 
 const track = document.getElementById("current-track")
 const artist = document.getElementById("current-artist")
@@ -49,7 +50,7 @@ audio.addEventListener("error", ()=>{
   isPlaying = false
   playButton.textContent = '▶ Play'
 
-  console.error("Не удавлось загрузить аудиофайл");
+  playerStatus.textContent = "Не удавлось загрузить аудиофайл"
 })
 audio.addEventListener("ended", ()=> {
   if(isRepeat){
@@ -80,6 +81,7 @@ progress.addEventListener("input", ()=>{
 })
 
 function playMusic(index) {
+  playerStatus.textContent = ""
   currentIndex = index
   currentTrack = tracks[index]
   
