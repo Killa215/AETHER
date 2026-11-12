@@ -197,8 +197,9 @@ function updateVolumeSlider(){
     to right,
     var(--blue) ${value}%,
     rgba(255,255,255,0.15) ${value}%
-  `
+  )`
 }
+updateVolumeSlider()
 
 volume.addEventListener("input", ()=>{
   updateVolumeSlider()
