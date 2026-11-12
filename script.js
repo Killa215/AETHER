@@ -8,7 +8,11 @@ const repeatButton = document.getElementById("repeat-button")
 const shuffleButton = document.getElementById("shuffle-button")
 const currentCover = document.getElementById("current-cover")
 const playerStatus = document.getElementById("player-status")
-const playerTrack = document.querySelector(".player-track")
+const muteButton = document.getElementById("mute-button")
+const volume = document.getElementById("volume")
+const muteIcon = document.querySelector(".mute-icon") 
+const playerTrack = document.querySelector(".player-track") 
+
 
 const track = document.getElementById("current-track")
 const artist = document.getElementById("current-artist")
@@ -38,6 +42,7 @@ const tracks = [
 ]
 
 const audio = new Audio()
+audio.volume = 0.5
 
 audio.addEventListener("play", ()=>{
   isPlaying = true
@@ -163,4 +168,27 @@ playButton.addEventListener("click", ()=>{
       console.error("Ошибка воспроизведения:", error);
     })
   }
+})
+
+function updateVolumeIcon(){
+  if(audio.muted || audio.volume === 0){
+    muteIcon.src = "./icon/mute.png"
+  }else{
+    muteIcon.src = "./icon/music.png"
+  }
+}
+
+volume.addEventListener("input", ()=>{
+  audio.volume = Number(volume.value)
+
+  if (audio.volume > 0){
+    audio.muted = false
+  }
+
+  updateVolumeIcon()
+})
+
+muteButton.addEventListener("click", ()=>{
+  audio.muted = !audio.muted
+  updateVolumeIcon()
 })
