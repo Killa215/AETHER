@@ -8,6 +8,7 @@ const repeatButton = document.getElementById("repeat-button")
 const shuffleButton = document.getElementById("shuffle-button")
 const currentCover = document.getElementById("current-cover")
 const playerStatus = document.getElementById("player-status")
+const playerTrack = document.querySelector(".player-track")
 
 const track = document.getElementById("current-track")
 const artist = document.getElementById("current-artist")
@@ -46,6 +47,9 @@ audio.addEventListener("pause", ()=>{
   isPlaying = false
   playButton.textContent = '▶ Play'
 })
+audio.addEventListener("playing", ()=>{
+  playerTrack.classList.remove("loading")
+})
 audio.addEventListener("error", ()=>{
   isPlaying = false
   playButton.textContent = '▶ Play'
@@ -81,7 +85,7 @@ progress.addEventListener("input", ()=>{
 })
 
 function playMusic(index) {
-  playerStatus.textContent = ""
+  playerTrack.classList.add("loading")
   currentIndex = index
   currentTrack = tracks[index]
   
@@ -90,7 +94,9 @@ function playMusic(index) {
   progress.value = 0
   startTime.textContent = "00:00"
   endTime.textContent = "00:00"
-  audio.play()
+  audio.play().catch(error => {
+    console.error("Ошибка воспроизведения:", error);
+  })
 
   track.textContent = currentTrack.title
   artist.textContent = currentTrack.artist
