@@ -86,10 +86,16 @@ audio.addEventListener("loadedmetadata", ()=>{
   progress.max = audio.duration
   endTime.textContent = formatTime(audio.duration)
 })
+
+function updateProgress(){
+  const percent = (audio.currentTime / audio.duration) * 100
+  progress.style.setProperty("--progress", `${percent}%`)
+}
+
 audio.addEventListener("timeupdate", ()=> {
   progress.value = audio.currentTime
   startTime.textContent = formatTime(audio.currentTime)
-  progress.style.setProperty("--progress", `${(audio.currentTime / audio.duration) * 100}%`)
+  updateProgress()
 })
 progress.addEventListener("input", ()=>{
   audio.currentTime = progress.value
@@ -184,13 +190,18 @@ function updateVolumeIcon(){
   }
 }
 
-volume.addEventListener("input", ()=>{
+function updateVolumeSlider(){
+  const value = Number(volume.value) * 100
   volume.style.background = `
   linear-gradient(
     to right,
-    var(--blue) ${volume.value * 100}%,
-    rgba(255,255,255,0.15) ${volume.value * 100}%
+    var(--blue) ${value}%,
+    rgba(255,255,255,0.15) ${value}%
   `
+}
+
+volume.addEventListener("input", ()=>{
+  updateVolumeSlider()
   audio.volume = Number(volume.value)
 
   if (audio.volume > 0){
