@@ -141,18 +141,12 @@ covers.forEach((cover, index) => {
 });
 
 playButton.addEventListener("click", ()=>{
-  if (currentTrack.title !== null) {
-    if (isPlaying === false) {
-    audio.play()
-    isPlaying = true
-    playButton.textContent = '⏸ Pause'  
-    }else{
+  if (currentTrack.title === null) return
+  if (isPlaying){
     audio.pause()
-    isPlaying = false
-    playButton.textContent = '▶ Play'
-    }
-  } else {
-    console.log("Трек не выбран")
-    return
+  }else {
+    audio.play().catch(error => {
+      console.error("Ошибка воспроизведения:", error);
+    })
   }
 })
