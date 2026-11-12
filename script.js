@@ -43,6 +43,12 @@ const tracks = [
 
 const audio = new Audio()
 audio.volume = 0.5
+volume.style.background =`
+  linear-gradient(
+    to right,
+    var(--blue) 50%,
+    rgba(255,255,255,0.15) 50%
+`
 
 audio.addEventListener("play", ()=>{
   isPlaying = true
@@ -179,6 +185,12 @@ function updateVolumeIcon(){
 }
 
 volume.addEventListener("input", ()=>{
+  volume.style.background = `
+  linear-gradient(
+    to right,
+    var(--blue) ${volume.value * 100}%,
+    rgba(255,255,255,0.15) ${volume.value * 100}%
+  `
   audio.volume = Number(volume.value)
 
   if (audio.volume > 0){
