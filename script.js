@@ -45,6 +45,12 @@ audio.addEventListener("pause", ()=>{
   isPlaying = false
   playButton.textContent = '▶ Play'
 })
+audio.addEventListener("error", ()=>{
+  isPlaying = false
+  playButton.textContent = '▶ Play'
+
+  console.error("Не удавлось загрузить аудиофайл");
+})
 audio.addEventListener("ended", ()=> {
   if(isRepeat){
     playMusic(currentIndex)
