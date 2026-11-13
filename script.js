@@ -43,6 +43,12 @@ const tracks = [
 
 const audio = new Audio()
 audio.volume = 0.5
+currentTrack = tracks[currentIndex]
+currentCover.src = covers[currentIndex].src
+track.textContent = currentTrack.title
+artist.textContent = currentTrack.artist
+audio.src = currentTrack.src
+
 volume.style.background =`
   linear-gradient(
     to right,

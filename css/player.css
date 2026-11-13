@@ -131,7 +131,7 @@
 
 #play-button:hover{
 transform: scale(1.05);
-box-shadow: 0 0 30 rgba(99, 102, 241, 0.6);
+box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
 }
 
 #previous-button,
@@ -339,4 +339,133 @@ box-shadow: 0 0 30 rgba(99, 102, 241, 0.6);
   border-radius: 50%;
   background: var(--blue);
   box-shadow: 0 0 8px var(--blue);
+}
+
+@media (max-width: 768px) {
+  .now-playing {
+    height: 205px;
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: 36px 28px 20px 36px 28px;
+    grid-template-areas:
+      "cover title"
+      "cover artist"
+      "progress progress"
+      "buttons buttons"
+      "extra extra";
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 4px;
+    padding: 12px;
+  }
+
+  .player-track {
+    grid-area: cover;
+    width: 72px;
+    height: 72px;
+    flex: none;
+  }
+
+  .player-track img,
+  .loading-spinner {
+    width: 72px;
+    height: 72px;
+  }
+
+  .player-controls {
+    display: contents;
+  }
+
+  #current-track {
+    grid-area: title;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 15px;
+  }
+
+  #current-artist {
+    grid-area: artist;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+  }
+
+  #player-status:empty {
+    display: none;
+  }
+
+  .play-mixer {
+    grid-area: progress;
+    grid-template-columns: 35px minmax(0, 1fr) 35px;
+    gap: 6px;
+  }
+
+  .buttons-track {
+    grid-area: buttons;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .buttons-track button {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+
+  .buttons-track button img {
+    width: 15px;
+    height: 15px;
+  }
+
+  #play-button {
+    width: 72px;
+    height: 36px;
+    padding: 0;
+  }
+
+  .player-extra {
+    grid-area: extra;
+    justify-content: center;
+    margin-top: 0;
+    gap: 10px;
+  }
+
+  #volume {
+    width: 90px;
+  }
+}
+
+@media (max-width: 380px) {
+  .now-playing{
+    left: 72px;
+    right: 6px;
+    padding: 10px;
+    column-gap: 8px;
+  }
+  .buttons-track{
+    width: 100%;
+    gap: 3px;
+    justify-content: center;
+    padding: 0;
+  }
+  .buttons-track button{
+    width: 28px;
+    height: 28px;
+  }
+  #play-button {
+    width: 60px;
+    height: 32px;
+  }
+
+  .player-extra {
+    gap: 6px;
+  }
+
+  #volume {
+    width: 75px;
+  }
 }
