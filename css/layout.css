@@ -1,0 +1,43 @@
+.hero{
+  margin-left: 90px;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.album-grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.sound-card{
+  height: 300px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sound-card img{
+  cursor: pointer;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(168, 85, 247, 0.3);
+  background: rgb(168, 85, 247);
+  object-fit: cover;
+  transition: scale 0.25s ease,
+    box-shadow 0.25s ease,
+    translate 0.25s ease;
+}
+
+.sound-card img:hover{
+  scale: 1.08;
+  box-shadow: 0 0 60px rgba(168, 85, 247, 0.7);
+  translate: 0 -12px;
+}

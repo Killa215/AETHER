@@ -1,0 +1,136 @@
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 12px;
+  background: rgba(15, 14, 27, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 200;
+}
+
+.sidebar-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 55px;
+}
+.sidebar-logo img{
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.3));
+}
+
+.sidebar-nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.nav-item{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  border: none;
+  border-radius: 16px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: 
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon img{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) invert(0.65);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item.active{
+  background: rgba(99, 102, 241, 0.18);
+  color: var(--blue);
+  box-shadow: 0 0 18 rgba(99, 102, 241, 0.2);
+}
+
+.nav-item.active .nav-icon img{
+  filter: 
+    brightness(0)
+    saturate(100%)
+    invert(45%)
+    sepia(90%)
+    saturate(2500%)
+    hue-rotate(215deg);
+}
+
+.nav-item:hover{
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.nav-item:hover .nav-icon img{
+  filter: brightness(0) invert(1);
+  transform: scale(1.1);
+}
+
+.nav-label{
+  position: absolute;
+  left: 68px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(25,23,42,0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+  pointer-events: none;
+  z-index: 300;
+}
+
+.nav-item:hover .nav-label{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-bottom{
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
