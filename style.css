@@ -29,6 +29,12 @@ body{
   padding-bottom: 225px;
 }
 
+.hero{
+  margin-left: 90px;
+  min-height: 100vh;
+  padding: 30px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -109,7 +115,7 @@ a {
   -webkit-backdrop-filter: blur(20px);
   position: fixed;
   bottom: 10px;
-  left: 10px;
+  left: 100px;
   right: 10px;
   z-index: 100;
 }
@@ -495,6 +501,84 @@ box-shadow: 0 0 30 rgba(99, 102, 241, 0.6);
     color 0.3s ease,
     box-shadow 0.3s ease,
     transform 0.3s ease;
+}
+
+.nav-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon img{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) invert(0.65);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item.active{
+  background: rgba(99, 102, 241, 0.18);
+  color: var(--blue);
+  box-shadow: 0 0 18 rgba(99, 102, 241, 0.2);
+}
+
+.nav-item.active .nav-icon img{
+  filter: 
+    brightness(0)
+    saturate(100%)
+    invert(45%)
+    sepia(90%)
+    saturate(2500%)
+    hue-rotate(215deg);
+}
+
+.nav-item:hover{
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.nav-item:hover .nav-icon img{
+  filter: brightness(0) invert(1);
+  transform: scale(1.1);
+}
+
+.nav-label{
+  position: absolute;
+  left: 68px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(25,23,42,0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+  pointer-events: none;
+  z-index: 300;
+}
+
+.nav-item:hover .nav-label{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-bottom{
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes orbit{
