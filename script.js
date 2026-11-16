@@ -223,3 +223,54 @@ muteButton.addEventListener("click", ()=>{
   muteButton.classList.toggle("active", audio.muted)
   updateVolumeIcon()
 })
+
+document.addEventListener('keydown', (event)=>{
+  event.preventDefault(); 
+  if (event.key == 'm'){
+    audio.muted = !audio.muted
+    muteButton.classList.toggle("active", audio.muted)
+    updateVolumeIcon()
+  }
+  if (event.code  == 'Space'){
+    if (currentTrack.title === null) return
+    if (isPlaying){
+      audio.pause()
+    }else {
+      audio.play().catch(error => {
+        console.error("Ошибка воспроизведения:", error);
+      })
+    }
+  } 
+  if (event.key == 'ArrowUp'){
+    audio.volume += 0.05
+  }
+  if (event.key == 'ArrowDown'){
+    audio.volume -= 0.05
+  }
+  if (event.key == 'ArrowRight'){
+    if(isShuffle){
+      playRandomTrack()
+    }else{
+      currentIndex++
+      if(currentIndex >= tracks.length){
+        currentIndex = 0
+      }
+      playMusic(currentIndex)
+    }
+  }
+  if (event.key == 'ArrowLeft'){
+    currentIndex--
+    if(currentIndex < 0){
+      currentIndex = tracks.length - 1
+    }
+    playMusic(currentIndex)
+  }
+  if (event.key == 'r'){
+    isRepeat = !isRepeat
+    repeatButton.classList.toggle("active")
+  }
+  if (event.key == 's'){
+    isShuffle = !isShuffle
+    shuffleButton.classList.toggle("active")
+  }
+})
