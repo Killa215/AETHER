@@ -225,14 +225,37 @@ muteButton.addEventListener("click", ()=>{
 })
 
 document.addEventListener('keydown', (event)=>{
-  event.preventDefault(); 
-  if (event.key == 'm'){
+  const target = event.target
+
+  if (
+    target.closest('input, textarea, select, button, a') || target.isContentEditable
+  ){
+    return
+  }
+
+  const key = event.key.toLowerCase()
+
+  const shortcuts = [
+    ' ',
+    'm',
+    'arrowup',
+    'arrowdown',
+    'arrowleft',
+    'arrowright',
+    'r',
+    's',
+  ]
+
+  if(!shortcuts.includes(key)) return
+
+  event.preventDefault()
+
+  if (key == 'm'){
     audio.muted = !audio.muted
     muteButton.classList.toggle("active", audio.muted)
     updateVolumeIcon()
   }
   if (event.code  == 'Space'){
-    if (currentTrack.title === null) return
     if (isPlaying){
       audio.pause()
     }else {
@@ -241,13 +264,18 @@ document.addEventListener('keydown', (event)=>{
       })
     }
   } 
-  if (event.key == 'ArrowUp'){
-    audio.volume += 0.05
+  if (key == 'arrowup' || key == 'arrowdown'){
+    const change = key === 'arrowup' ? 0.05 : -0.05 
+
+    audio.volume = Math.max(
+      0, Math.min(1, audio.volume + change)
+    )
+
+    volume.value = audio.volume
+    updateVolumeSlider()
+    updateVolumeIcon()
   }
-  if (event.key == 'ArrowDown'){
-    audio.volume -= 0.05
-  }
-  if (event.key == 'ArrowRight'){
+  if (key == 'arrowright'){
     if(isShuffle){
       playRandomTrack()
     }else{
@@ -258,18 +286,18 @@ document.addEventListener('keydown', (event)=>{
       playMusic(currentIndex)
     }
   }
-  if (event.key == 'ArrowLeft'){
+  if (key == 'arrowleft'){
     currentIndex--
     if(currentIndex < 0){
       currentIndex = tracks.length - 1
     }
     playMusic(currentIndex)
   }
-  if (event.key == 'r'){
+  if (key == 'r'){
     isRepeat = !isRepeat
     repeatButton.classList.toggle("active")
   }
-  if (event.key == 's'){
+  if (key == 's'){
     isShuffle = !isShuffle
     shuffleButton.classList.toggle("active")
   }
